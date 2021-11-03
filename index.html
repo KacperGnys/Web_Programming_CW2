@@ -8,6 +8,8 @@
     <script src="game.js"></script>
     <script>
       var bear;
+      var bees;
+      var updateTimer;
     </script>
   </head>
 
@@ -16,10 +18,12 @@
       <h1>Help the bear escape the bees !</h1>
       <p>
         Bear tries to avoid being stung by
-        <input type="text" id="nbBees" value="1" size="3" /> bees by running and
+        <input type="text" id="nbBees" value="4" size="3" /> bees by running and
         jumping. The objective is to have as little stings as possible!
       </p>
       <p>
+        You can adjust the bears speed (this doesn't work)
+        <input type="text" id="speedBear" value="10" size="3" /><br />
         You can adjust the bees' speed
         <input type="text" id="speedBees" value="50" size="3" /> px/ms <br />
         and the refresh period
