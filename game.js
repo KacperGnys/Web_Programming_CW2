@@ -164,6 +164,18 @@ function isHit(defender, offender) {
     let score = hits.innerHTML;
     score = Number(score) + 1; //increment the score
     hits.innerHTML = score; //display the new score
+
+    //calculate longest duration
+    let newStingTime = new Date();
+    let thisDuration = newStingTime - lastStingTime;
+    lastStingTime = newStingTime;
+    let longestDuration = Number(duration.innerHTML);
+    if (longestDuration === 0) {
+      longestDuration = thisDuration;
+    } else {
+      if (longestDuration < thisDuration) longestDuration = thisDuration;
+    }
+    document.getElementById("duration").innerHTML = longestDuration;
   }
 }
 
@@ -201,6 +213,8 @@ function start() {
   document.addEventListener("keydown", moveBear, false);
   //create new array for bees
   bees = new Array();
+  //take start time
+  lastStingTime = new Date();
   //create bees
   makeBees();
   //moves the bees
@@ -213,6 +227,11 @@ function updateBees() {
   moveBees();
   //use a fixed update period
   let period = document.getElementById("periodTimer").value; // this controls the refresh period
+  let score = hits.innerHTML; // this gets the number of stings
   //update the timer for the next move
+  if (score > 10) {
+    document.getElementById("speedBees").value = 0;
+    clearTimeout();
+  }
   updateTimer = setTimeout("updateBees()", period);
 }
