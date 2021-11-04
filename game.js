@@ -122,6 +122,8 @@ function makeBees() {
   }
 }
 
+function addBee() {}
+
 function moveBees() {
   //get speed input field value
   let speed = document.getElementById("speedBees").value;
@@ -229,9 +231,10 @@ function updateBees() {
   let period = document.getElementById("periodTimer").value; // this controls the refresh period
   let score = hits.innerHTML; // this gets the number of stings
   //update the timer for the next move
-  if (score > 10) {
+  if (score > 1000) {
     document.getElementById("speedBees").value = 0;
     clearTimeout();
+    alert("Game Over!");
   }
   updateTimer = setTimeout("updateBees()", period);
 }
